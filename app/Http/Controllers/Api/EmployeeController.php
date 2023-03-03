@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
@@ -88,5 +88,32 @@ class EmployeeController extends Controller
             return "Employee Not Found";
         }
         
+    }
+
+    public function search($name)
+    {
+        $employee = (new Employee())->where('name','like','%'.$name.'%')->get();
+        if($employee)
+        {
+            return response()->json([
+                'status'=> true,
+                'data'  => $employee,
+                'status_code' => 200,
+                'message' => "Data Found",
+                'employee_count'=>count($employee)
+            ]);
+
+        }
+        else
+        {
+            return response()->json(
+                [
+                    'status' => false,
+                    'data'  => '',
+                    'message'=> "Data Not Found",
+                    'status_code' => 401
+                ]
+            );
+        }
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\LoginController;
-use App\Http\Controllers\Web\EmployeeController;
+use App\Http\Controllers\Api\EmployeeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,17 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
 Route::post('login',[LoginController::class,'login'])->name('user.login');
 Route::post('logout',[LoginController::class,'logout'])->name('user.logout');
-// Route::controller(EmployeeController::class)->group(function(){
-//     Route::get('employees','index')->name('employee.index');
-// });
 
 Route::post('login',[LoginController::class,'login']);
-Route::get('employee-details/{id}',[EmployeeController::class,'show']);
 Route::get('employees',[EmployeeController::class,'index'])->name('employee.index');
+Route::get('employee-details/{id}',[EmployeeController::class,'show']);
+Route::get('search/{name}',[EmployeeController::class,'search'])->name('employee.search');
