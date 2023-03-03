@@ -27,5 +27,6 @@ Route::post('logout',[LoginController::class,'logout'])->name('user.logout');
 //     Route::get('employees','index')->name('employee.index');
 // });
 
-Route::get('employees',[EmployeeController::class,'index']);
+Route::post('login',[LoginController::class,'login']);
 Route::get('employee-details/{id}',[EmployeeController::class,'show']);
+Route::get('employees',[EmployeeController::class,'index'])->name('employee.index');

@@ -27,24 +27,28 @@
           
                       <h3 class="">Sign in</h3>
                       <label for="">Enter credentials to login</label>
+                      <form action="{{ route('employee.login') }}" method="post">
+                      @csrf
                       <div class="form-outline mb-4 mt-5">
-                          <label class="form-label" for="email">Email</label>
-                          <input type="email" id="email" placeholder="Email" class="form-control form-control-lg" />
-                      </div>
-          
-                      <div class="form-outline mb-4">
-                          <label class="form-label" for="password">Password</label>
-                        <input type="password" placeholder="Password" id="password" class="form-control form-control-lg" />
-                      </div>
-          
-                      <!-- Checkbox -->
-                      <div class="form-check d-flex justify-content-start mb-4">
-                        <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                        <label class="form-check-label" for="form1Example3"> Save credentials </label>
-                      </div>
-          
-                      <button class="btn btn-primary btn-lg btn-block w-100 mb-5" type="submit">Login</button>
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Email" class="form-control form-control-lg" />
+                    </div>
         
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="password">Password</label>
+                      <input type="password" name="password" placeholder="Password" id="password" class="form-control form-control-lg" />
+                    </div>
+        
+                    <!-- Checkbox -->
+                    <div class="form-check d-flex justify-content-start mb-4">
+                      <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                      <label class="form-check-label" for="form1Example3"> Save credentials </label>
+                    </div>
+        
+                    <button class="btn btn-primary btn-lg btn-block w-100 mb-5" type="submit">Login</button>
+      
+                      </form>
+                      
                     </div>
                   </div>
                 </div>

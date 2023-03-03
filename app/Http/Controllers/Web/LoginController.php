@@ -15,13 +15,10 @@ class LoginController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-   
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
-                ->withSuccess('Signed in');
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) 
+        {
+            return redirect()->route('employees');
         }
-  
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect()->back();
     }
 }

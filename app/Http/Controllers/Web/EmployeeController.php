@@ -4,20 +4,28 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class EmployeeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $employees = (new Employee())->all();
+        $employee_counts = (new Employee())->count();
+        $data = 
+        [
+            'employees'         => $employees,
+            'employee_counts'   => $employee_counts
+        ];
         if($employees)
         {
             return response()->json(
                 [
                     'status' => true,
                     'message' => "Data Found",
-                    'data' => $employees,
+                    'data' => $data,
                     'status_code' => 200
                 ]
             );
